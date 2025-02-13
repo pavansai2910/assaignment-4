@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       function Agecheck() {
+        var a=document.getElementById("age").value;
+        a=parseInt(a);
+        if (isNaN(a) || a<0){
+            document.getElementById("result").innerText="Enter a number or number greater than 0";
+            return;
+        }
+        if (a<10){
+            document.getElementById("result").innerText="Child";
+            return;
+        }
+        if (a>10 && a<=18){
+            document.getElementById("result").innerText="Teenage";
+            return;
+        }
+
+        if (a>18 && a<=35){
+            document.getElementById("result").innerText="Young";
+            return;
+        }
+
+        if (a>35){
+            document.getElementById("result").innerText="Senior citizin";
+            return;
+        }
+
+
+        }
+
+    
+    </script>
+</head>
+<body>
+    enter the age:<input type="text" id="age"/>
+    <input type="button" value="Age group" onclick="Agecheck();"/>
+    <p id="result">Nothing is given</p>
+    </body>
+</html>

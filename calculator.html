@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+        }
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Grade Calculator</h2>
+    
+    <input type="text" id="name" placeholder="Enter Student Name"><br>
+    <input type="number" id="sub1" placeholder="Marks in Subject 1"><br>
+    <input type="number" id="sub2" placeholder="Marks in Subject 2"><br>
+    <input type="number" id="sub3" placeholder="Marks in Subject 3"><br>
+    <input type="number" id="sub4" placeholder="Marks in Subject 4"><br>
+    <input type="number" id="sub5" placeholder="Marks in Subject 5"><br>
+    
+    <button onclick="calculateGrade()">Calculate Grade</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function calculateGrade() {
+            let name = document.getElementById("name").value;
+            let marks = [];
+            for (let i = 1; i <= 5; i++) {
+                let mark = parseFloat(document.getElementById("sub" + i).value);
+                if (isNaN(mark) || mark < 0 || mark > 100) {
+                    document.getElementById("result").innerText = "Please enter valid marks (0-100) for all subjects.";
+                    return;
+                }
+                marks.push(mark);
+            }
+
+            let total = marks.reduce((sum, mark) => sum + mark, 0);
+            let percentage = (total / 500) * 100;
+            let grade = "";
+
+            if (percentage >= 90) grade = "A+";
+            else if (percentage >= 80) grade = "A";
+            else if (percentage >= 70) grade = "B";
+            else if (percentage >= 60) grade = "C";
+            else if (percentage >= 50) grade = "D";
+            else grade = "F (Fail)";
+
+            document.getElementById("result").innerHTML = 
+                `<strong>Name:</strong> ${name} <br>
+                 <strong>Total Marks:</strong> ${total}/500 <br>
+                 <strong>Percentage:</strong> ${percentage.toFixed(2)}% <br>
+                 <strong>Grade:</strong> ${grade}`;
+        }
+    </script>
+
+</body>
+</html>

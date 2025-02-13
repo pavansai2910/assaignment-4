@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function reverseString(){
+            var a=document.getElementById("string").value;
+            let n=a.length;
+            let st=[]
+            for(let x=n;x>=0;x-- ){
+                  st.push(a[x]);
+            }
+            document.getElementById("ans").innerHTML = st.join(' ');
+            return;
+        }
+    </script>
+</head>
+<body>
+    Enter the string:<input type="text" id="string"/></br>
+    <input type="button" value="reverse the string" onclick="reverseString();"/>
+    <p id="ans">No stirng given.</p>
+</body>
+</html>
